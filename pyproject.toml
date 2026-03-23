@@ -1,16 +1,6 @@
-[tool.poetry]
-name = "weather_dashboard"
-version = "1.0.0"
-description = "Weather dashboard project for Python 2080"
-authors = ["Me"]
+[project]
+name = "pa4-dashboard"
+version = "0.1.0"
 
-[tool.poetry.dependencies]
-python = "^3.11"
-streamlit = "^1.26.0"
-pandas = "^2.1.0"
-requests = "^2.32.0"
-plotly = "^5.18.0"
-
-[build-system]
-requires = ["poetry.core"]
-build-backend = "poetry.core.masonry.api"
+[project.dependencies]
+dependencies = {"streamlit>=1.30", "pandas>=2.0", "requests>=2.31", "plotly>=5.0"}
