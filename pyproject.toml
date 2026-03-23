@@ -6,4 +6,5 @@ dependencies = [
     "pandas>=2.0",
     "requests>=2.31",
     "plotly>=5.0"
+    "python>=3.10"
 ]
