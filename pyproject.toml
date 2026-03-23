@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "weather_dashboard"
+version = "1.0.0"
+description = "Weather dashboard project for Python 2080"
+authors = ["Me"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.26.0"
+pandas = "^2.1.0"
+requests = "^2.32.0"
+plotly = "^5.18.0"
+
+[build-system]
+requires = ["poetry.core"]
+build-backend = "poetry.core.masonry.api"
