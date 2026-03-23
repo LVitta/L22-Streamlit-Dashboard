@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
-import plotly.graph_objects as graph_objects
+import plotly.graph_objects as go
 from datetime import datetime
 
 # Page layout
@@ -10,7 +10,7 @@ st.set_page_config(page_title = "L22 Weather API Dashboard", layout = "wide")
 st.sidebar.header("Settings")
 city = st.sidebar.text_input("City Name:", "Lakeland")
 unit = st.sidebar.selectbox("Measurement:", ["Celsius", 
-"Farenheit"])
+"Fahrenheit"])
 api_key = st.secrets["OPENWEATHER_API_KEY"]
 unit_param = "metric" if "Celsius" in unit else "imperial"
 
@@ -25,11 +25,11 @@ def fetch_weather(city_name, api_key, units = "imperial"):
 
 @st.cache_data
 def fetch_forecast(city_name, api_key, units = "imperial"):
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&units={units}&appid={api_key}"
+    url = f"https://api.openweathermap.org/data/2.5/forecast?q={city_name}&units={units}&appid={api_key}"
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        df pd.DataFrame(data['list'])
+        df = pd.DataFrame(data['list'])
         df['datetime'] = pd.to_datetime(df['dt_txt'])
         df['temp'] = df['main'].apply(lambda x: x['temp'])
         df['humidity'] = df['main'].apply(lambda x: x['humidity'])
@@ -70,7 +70,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 # humidity bar chart
 st.subheader("Forecasted Humidity")
-st.bar_chart(fig, use_container_width=True)
+st.bar_chart(forecast_df.set_index('datetime')['humidity'])
 
 # forecast data table
 st.subheader("Forecast Data Table")
