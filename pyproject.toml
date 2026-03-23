@@ -3,4 +3,9 @@ name = "pa4-dashboard"
 version = "0.1.0"
 
 [project.dependencies]
-dependencies = ["streamlit>=1.30", "pandas>=2.0", "requests>=2.31", "plotly>=5.0"]
+dependencies = [
+    "streamlit>=1.30",
+    "pandas>=2.0",
+    "requests>=2.31",
+    "plotly>=5.0"
+]
